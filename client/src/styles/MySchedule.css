@@ -1,0 +1,199 @@
+:root {
+  --sch-navy: #0f172a;
+  --sch-blue: #2563eb;
+  --sch-bg: #f8fafc;
+  --sch-border: #e2e8f0;
+  --sch-glass-green: #ecfdf5;
+  --sch-text-green: #059669;
+}
+
+.schedule-viewport {
+  min-height: 100vh;
+  background-color: var(--sch-bg);
+  padding: 40px 20px;
+}
+/* --- TAB NAVIGATION CONTAINER --- */
+.schedule-tabs {
+  background-color: #f1f5f9; /* Soft Slate background */
+  padding: 6px;
+  border-radius: 14px;
+  display: inline-flex;
+  gap: 4px;
+  border: 1px solid #e2e8f0;
+}
+
+/* --- INDIVIDUAL TAB BUTTON --- */
+.sch-tab-btn {
+  padding: 10px 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #64748b; /* Muted slate text */
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+/* --- HOVER EFFECT --- */
+.sch-tab-btn:hover {
+  color: #0f172a; /* Navy text on hover */
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* --- ACTIVE STATE (The "Pops" effect) --- */
+.sch-tab-btn.active {
+  background-color: #ffffff; /* White background for the selected tab */
+  color: #3b82f6;            /* Primary action blue text */
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+    0 2px 4px -2px rgba(0, 0, 0, 0.05); /* Soft shadow to look elevated */
+}
+.sch-link-setup-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sch-link-verified {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f0fdf4;
+    color: #16a34a;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    border: 1px solid #dcfce7;
+}
+
+.btn-sch-join {
+    background: #2563eb !important;
+    text-transform: none !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+    padding: 8px 24px !important;
+}
+
+.empty-state {
+    background: white;
+    border: 2px dashed #e2e8f0;
+    border-radius: 20px;
+}
+.sch-tab-btn svg {
+  font-size: 1.1rem;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.schedule-card {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--sch-border);
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.schedule-card:hover {
+  border-color: var(--sch-blue);
+  box-shadow: 0 12px 24px -10px rgba(0,0,0,0.1);
+}
+
+.sch-main-body {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.sch-date-pill {
+  background: var(--sch-navy);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 14px;
+  text-align: center;
+  min-width: 90px;
+}
+
+.sch-client-details {
+  flex: 1;
+}
+
+.sch-client-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--sch-navy);
+  margin-bottom: 4px;
+}
+
+.sch-issue-summary {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* --- THE ACTION BAR (LOCKED LOGIC) --- */
+.sch-action-bar {
+  padding: 16px 24px;
+  background-color: #fafbfc;
+  border-top: 1px solid var(--sch-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* State A: Input Mode */
+.sch-link-setup {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  max-width: 600px;
+}
+
+.sch-url-input {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1.5px solid var(--sch-border);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+.sch-url-input:focus { border-color: var(--sch-blue); }
+
+/* State B: Locked Mode */
+.sch-link-verified {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--sch-text-green);
+  background: var(--sch-glass-green);
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.btn-sch-join {
+  background: var(--sch-blue) !important;
+  color: white !important;
+  padding: 10px 30px !important;
+  border-radius: 50px !important;
+  font-weight: 800 !important;
+  text-transform: none !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25) !important;
+}
+
+.btn-sch-save {
+    background: var(--sch-navy) !important;
+    color: white !important;
+    text-transform: none !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+}

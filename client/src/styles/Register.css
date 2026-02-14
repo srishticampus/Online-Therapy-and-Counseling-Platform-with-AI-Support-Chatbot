@@ -1,0 +1,211 @@
+:root {
+  --reg-navy: #0f172a;
+  --reg-blue: #3b82f6;
+  --reg-slate: #64748b;
+  --reg-bg-light: #f8fafc;
+  --reg-white: #ffffff;
+  --nav-height: 80px; 
+}
+
+.reg-split-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--reg-white);
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow: hidden;
+}
+
+/* --- LEFT PANEL --- */
+.reg-left-panel {
+  flex: 1;
+  background-color: var(--reg-navy);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.reg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 1;
+  opacity: 0.3;
+}
+.blob-large { width: 600px; height: 600px; background: var(--reg-blue); top: -10%; left: -10%; }
+.blob-med { width: 400px; height: 400px; background: #6366f1; bottom: -5%; right: -5%; }
+
+.reg-left-content {
+  position: relative;
+  z-index: 10;
+  padding: 60px;
+  color: white;
+  max-width: 500px;
+}
+
+.reg-left-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+/* --- RIGHT PANEL --- */
+.reg-right-panel {
+  flex: 1.2;
+  height: 100vh;
+  background-color: var(--reg-white);
+  overflow-y: auto; /* ENABLES SCROLLING */
+  box-sizing: border-box;
+}
+
+/* Custom Scrollbar for Right Panel */
+.reg-right-panel::-webkit-scrollbar {
+  width: 8px;
+}
+.reg-right-panel::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.reg-form-wrapper {
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+  padding: calc(var(--nav-height) + 40px) 40px 100px; /* SPACE AT BOTTOM */
+}
+
+.reg-form-title-text {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--reg-navy);
+  letter-spacing: -1px;
+}
+
+.reg-tabs {
+  display: flex;
+  background: #f1f5f9;
+  padding: 6px;
+  border-radius: 14px;
+  margin-bottom: 30px;
+}
+
+.reg-tab-item {
+  flex: 1;
+  border: none;
+  padding: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--reg-slate);
+  transition: 0.3s;
+}
+
+.reg-tab-item.active {
+  background: white;
+  color: var(--reg-blue);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.reg-avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  background: var(--reg-bg-light);
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.reg-avatar-box {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: 2px dashed #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  background: white;
+}
+
+.reg-avatar-box img { width: 100%; height: 100%; object-fit: cover; }
+
+.reg-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.reg-full { grid-column: span 2; }
+
+.reg-input-group { margin-bottom: 15px; }
+
+.reg-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--reg-navy);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.reg-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.reg-input-icon { position: absolute; left: 15px; color: var(--reg-slate); font-size: 20px; }
+
+.reg-field {
+  width: 100%;
+  padding: 12px 12px 12px 45px;
+  background: var(--reg-bg-light);
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+.reg-field:focus {
+  outline: none;
+  border-color: var(--reg-blue);
+  background: white;
+}
+
+.reg-password-eye { position: absolute; right: 15px; cursor: pointer; color: var(--reg-slate); }
+
+.reg-btn-submit {
+  width: 100%;
+  padding: 16px;
+  background: var(--reg-navy);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.reg-btn-submit:hover:not(:disabled) {
+  background: var(--reg-blue);
+  transform: translateY(-2px);
+}
+
+.reg-btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1024px) {
+  .reg-left-panel { display: none; }
+  .reg-right-panel { flex: 1; padding: 0 20px; }
+  .reg-form-wrapper { padding-top: 100px; }
+  .reg-grid { grid-template-columns: 1fr; }
+  .reg-full { grid-column: span 1; }
+}

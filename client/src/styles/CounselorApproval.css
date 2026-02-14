@@ -1,0 +1,154 @@
+:root {
+  --admin-navy: #0f172a;
+  --admin-blue: #3b82f6;
+  --admin-bg: #f8fafc;
+  --admin-white: #ffffff;
+  --admin-border: #e2e8f0;
+}
+
+.approval-wrapper {
+  padding-bottom: 50px;
+}
+
+/* --- HEADER AREA --- */
+.approval-page-header {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-info h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--admin-navy);
+  margin: 0;
+}
+
+.header-info p {
+  color: #64748b;
+  margin-top: 5px;
+}
+
+/* --- GRID SYSTEM --- */
+.approval-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+/* --- THE CARD --- */
+.professional-card {
+  background: var(--admin-white);
+  border: 1px solid var(--admin-border);
+  border-radius: 20px;
+  padding: 24px;
+  position: relative;
+  transition: box-shadow 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.professional-card:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  border-color: var(--admin-blue);
+}
+
+/* Profile Header inside Card */
+.card-header-flex {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pro-avatar {
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 14px !important; /* Square-round look like modern SaaS */
+  background: var(--admin-bg);
+}
+
+.pro-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--admin-navy);
+  margin: 0;
+}
+
+.pro-specialization {
+  font-size: 0.8rem;
+  color: var(--admin-blue);
+  background: #eff6ff;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+/* Data Table inside Card */
+.pro-data-box {
+  background: #f1f5f9;
+  border-radius: 12px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.data-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.data-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--admin-navy);
+}
+
+/* Action Buttons */
+.pro-action-row {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-approve {
+  flex: 2;
+  background-color: var(--admin-navy) !important;
+  color: white !important;
+  text-transform: none !important;
+  font-weight: 700 !important;
+  border-radius: 10px !important;
+  padding: 10px !important;
+}
+
+.btn-approve:hover {
+  background-color: var(--admin-blue) !important;
+}
+
+.btn-reject {
+  flex: 1;
+  background-color: #fff1f2 !important;
+  color: #e11d48 !important;
+  border: 1px solid #fecaca !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+}
+
+.btn-reject:hover {
+  background-color: #ffe4e6 !important;
+}
+
+/* Empty State */
+.no-pending-box {
+  text-align: center;
+  padding: 100px 20px;
+  background: white;
+  border-radius: 20px;
+  border: 1px dashed #cbd5e1;
+}

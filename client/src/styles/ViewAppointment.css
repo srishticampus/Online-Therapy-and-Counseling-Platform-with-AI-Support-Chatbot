@@ -1,0 +1,171 @@
+:root {
+    --view-navy: #0f172a;
+    --view-blue: #3b82f6;
+    --view-green: #10b981;
+    --view-red: #ef4444;
+    --view-bg: #f8fafc;
+    --view-border: #e2e8f0;
+}
+
+.view-viewport {
+    min-height: calc(100vh - 80px);
+    background-color: var(--view-bg);
+    padding: 40px 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.view-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* --- HEADER --- */
+.view-header {
+    margin-bottom: 40px;
+}
+
+.view-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--view-navy);
+    letter-spacing: -1px;
+}
+
+/* --- TABS --- */
+.view-tabs {
+    display: inline-flex;
+    background: #e2e8f0;
+    padding: 5px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.view-tab-btn {
+    padding: 10px 24px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 8px;
+    color: #64748b;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.view-tab-btn.active {
+    background: white;
+    color: var(--view-blue);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* --- APPOINTMENT CARD --- */
+.appt-card {
+    background: white;
+    border-radius: 20px;
+    border: 1px solid var(--view-border);
+    margin-bottom: 20px;
+    display: flex;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.appt-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.06);
+    border-color: var(--view-blue);
+}
+
+/* Left: Date Box */
+.appt-date-box {
+    width: 100px;
+    background: #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--view-border);
+    padding: 20px;
+    color: var(--view-navy);
+}
+
+.date-month { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: #64748b; }
+.date-day { font-size: 2.2rem; font-weight: 900; line-height: 1; margin: 5px 0; }
+.date-year { font-size: 0.8rem; font-weight: 600; color: #94a3b8; }
+
+/* Middle: Details */
+.appt-details {
+    flex: 1;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.counselor-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.counselor-avatar {
+    width: 60px !important;
+    height: 60px !important;
+    border: 2px solid #e2e8f0;
+}
+
+/* Right: Actions */
+.appt-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-scheduled { background: #d1fae5; color: #059669; }
+.status-pending { background: #fef3c7; color: #d97706; }
+.status-cancelled { background: #fee2e2; color: #dc2626; }
+.status-completed { background: #e0f2fe; color: #0284c7; }
+
+.btn-join-meet {
+    background: var(--view-blue) !important;
+    color: white !important;
+    padding: 8px 20px !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
+}
+
+.btn-cancel-appt {
+    color: #94a3b8 !important;
+    font-size: 0.8rem !important;
+    text-transform: none !important;
+    font-weight: 600 !important;
+}
+
+.btn-cancel-appt:hover { color: var(--view-red) !important; }
+
+/* Empty State */
+.empty-history {
+    text-align: center;
+    padding: 80px 0;
+    color: #94a3b8;
+}
+
+@media (max-width: 768px) {
+    .appt-card { flex-direction: column; }
+    .appt-date-box { width: 100%; flex-direction: row; gap: 10px; padding: 15px; border-right: none; border-bottom: 1px solid var(--view-border); }
+    .appt-details { flex-direction: column; align-items: flex-start; }
+    .appt-actions { width: 100%; flex-direction: row; justify-content: space-between; align-items: center; }
+}

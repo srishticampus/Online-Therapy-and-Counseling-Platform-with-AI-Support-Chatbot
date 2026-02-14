@@ -1,0 +1,113 @@
+:root {
+  --admin-navy: #0f172a;
+  --admin-blue: #3b82f6;
+  --admin-bg: #f8fafc;
+  --admin-border: #e2e8f0;
+}
+
+.userlist-viewport {
+  width: 100%;
+  animation: fadeIn 0.5s ease;
+}
+
+/* --- STATS SECTION --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.stat-item-card {
+  background: white;
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid var(--admin-border);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.stat-icon-box {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- TAB NAVIGATION --- */
+.management-tabs {
+  background: #f1f5f9;
+  padding: 6px;
+  border-radius: 14px;
+  display: inline-flex;
+  margin-bottom: 30px;
+  gap: 4px;
+}
+
+.m-tab {
+  padding: 10px 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.m-tab.active {
+  background: white;
+  color: var(--admin-blue);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* --- TABLE STYLING --- */
+.directory-table-card {
+  background: white !important;
+  border-radius: 24px !important;
+  border: 1px solid var(--admin-border) !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.03) !important;
+}
+
+.directory-table-head {
+  background-color: #f8fafc;
+}
+
+.directory-table-head th {
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  font-size: 0.65rem !important;
+  letter-spacing: 1.2px;
+  color: #64748b !important;
+  padding: 20px !important;
+}
+
+.directory-row {
+  transition: background 0.2s;
+}
+
+.directory-row:hover {
+  background-color: #f8fafc !important;
+}
+
+/* Professional Badge */
+.pro-license-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  background: #f1f5f9;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: var(--admin-navy);
+  font-weight: 600;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,168 @@
+:root {
+  --req-navy: #0f172a;
+  --req-blue: #3b82f6;
+  --req-green: #10b981;
+  --req-red: #ef4444;
+  --req-bg: #f8fafc;
+  --req-border: #e2e8f0;
+}
+
+.req-viewport {
+  min-height: calc(100vh - 80px);
+  background-color: var(--req-bg);
+  padding: 40px 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.req-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* --- HEADER --- */
+.req-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.req-title h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--req-navy);
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+.req-title p {
+  color: #64748b;
+  margin-top: 5px;
+}
+
+/* --- GRID LAYOUT --- */
+.req-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 25px;
+}
+
+/* --- REQUEST CARD --- */
+.req-card {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--req-border);
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.req-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px -5px rgba(0,0,0,0.1);
+  border-color: var(--req-blue);
+}
+
+/* Card Header (Client Profile) */
+.req-card-top {
+  padding: 24px;
+  border-bottom: 1px solid var(--req-border);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.req-avatar {
+  width: 56px !important;
+  height: 56px !important;
+  border: 2px solid #f1f5f9;
+}
+
+.req-client-info h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--req-navy);
+  margin: 0;
+}
+
+.req-client-info span {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* Card Body (Details) */
+.req-card-body {
+  padding: 24px;
+}
+
+.req-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  color: var(--req-navy);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.req-issue-box {
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.req-issue-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #94a3b8;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.req-issue-text {
+  font-size: 0.9rem;
+  color: #334155;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* Card Actions */
+.req-card-actions {
+  padding: 20px 24px;
+  background: #fdfdfd;
+  border-top: 1px solid var(--req-border);
+  display: flex;
+  gap: 15px;
+}
+
+.btn-req-accept {
+  flex: 1;
+  background: var(--req-navy) !important;
+  color: white !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  padding: 10px !important;
+}
+
+.btn-req-accept:hover { background: var(--req-blue) !important; }
+
+.btn-req-decline {
+  flex: 1;
+  color: var(--req-red) !important;
+  border-color: #fecaca !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+}
+
+.btn-req-decline:hover { background: #fef2f2 !important; }
+
+/* Empty State */
+.req-empty {
+  text-align: center;
+  padding: 80px 0;
+  color: #94a3b8;
+}

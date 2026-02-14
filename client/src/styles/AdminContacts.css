@@ -1,0 +1,214 @@
+:root {
+  --con-navy: #0f172a;
+  --con-blue: #3b82f6;
+  --con-bg: #f8fafc;
+  --con-border: #e2e8f0;
+  --con-hover: #f1f5f9;
+}
+
+/* --- MAIN LAYOUT --- */
+.inbox-wrapper {
+  height: calc(100vh - 80px); /* Fill remaining screen height */
+  display: flex;
+  background-color: white;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  border-top: 1px solid var(--con-border);
+}
+
+/* --- LEFT SIDE: MESSAGE LIST --- */
+.inbox-list-panel {
+  width: 400px;
+  border-right: 1px solid var(--con-border);
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  flex-shrink: 0;
+}
+
+.inbox-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--con-border);
+}
+
+.inbox-header h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--con-navy);
+  margin-bottom: 5px;
+}
+
+/* Filter Tabs */
+.inbox-tabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.inbox-tab {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--con-border);
+  background: white;
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.inbox-tab.active {
+  background: var(--con-navy);
+  color: white;
+  border-color: var(--con-navy);
+}
+
+/* List Items */
+.inbox-items-container {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.inbox-item {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--con-border);
+  cursor: pointer;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.inbox-item:hover {
+  background-color: var(--con-hover);
+}
+
+.inbox-item.selected {
+  background-color: #eff6ff; /* Light Blue */
+  border-left: 4px solid var(--con-blue);
+}
+
+.item-top-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.sender-name {
+  font-weight: 700;
+  color: var(--con-navy);
+  font-size: 0.95rem;
+}
+
+.item-date {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.item-subject {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-snippet {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.unread-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--con-blue);
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+
+/* --- RIGHT SIDE: READING PANE --- */
+.inbox-detail-panel {
+  flex: 1;
+  background-color: var(--con-bg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Empty State */
+.empty-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #94a3b8;
+}
+
+/* Message View */
+.detail-toolbar {
+  padding: 15px 30px;
+  background-color: white;
+  border-bottom: 1px solid var(--con-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-content {
+  padding: 40px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.detail-header {
+  margin-bottom: 30px;
+}
+
+.detail-subject {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--con-navy);
+  margin-bottom: 20px;
+}
+
+.sender-info-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--con-border);
+}
+
+.detail-body {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #334155;
+  white-space: pre-wrap; /* Preserves formatting */
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.MuiBackdrop-root {
+    backdrop-filter: blur(3px);
+    background-color: rgba(15, 23, 42, 0.4) !important;
+}
+.status-badge.pending { background: #fff7ed; color: #c2410c; }
+.status-badge.resolved { background: #dcfce7; color: #15803d; }
+
+@media (max-width: 900px) {
+    .inbox-list-panel { width: 100%; }
+    .inbox-detail-panel { display: none; } /* Hide detail on mobile list view */
+    /* Mobile logic would need a back button to toggle views */
+}

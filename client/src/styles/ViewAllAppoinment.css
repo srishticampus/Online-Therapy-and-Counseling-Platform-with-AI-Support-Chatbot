@@ -1,0 +1,91 @@
+:root {
+    --adm-navy: #0f172a;
+    --adm-blue: #3b82f6;
+    --adm-bg: #f8fafc;
+    --adm-border: #e2e8f0;
+}
+
+.adm-appt-viewport {
+    padding: 30px;
+    background-color: var(--adm-bg);
+    min-height: calc(100vh - 80px);
+}
+
+.adm-appt-container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* --- HEADER & FILTERS --- */
+.adm-appt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.adm-search-box {
+    background: white;
+    border: 1px solid var(--adm-border);
+    padding: 10px 20px;
+    border-radius: 12px;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.adm-search-input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+}
+
+/* --- TABLE STYLING --- */
+.adm-table-card {
+    background: white !important;
+    border-radius: 20px !important;
+    border: 1px solid var(--adm-border) !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+}
+
+.adm-table-head {
+    background-color: #f1f5f9;
+}
+
+.adm-table-head th {
+    font-weight: 800 !important;
+    text-transform: uppercase;
+    font-size: 0.7rem !important;
+    letter-spacing: 1px;
+    color: var(--adm-slate);
+    padding: 20px !important;
+}
+
+.adm-row-animate {
+    transition: background 0.2s;
+}
+
+.adm-row-animate:hover {
+    background-color: #f8fbff !important;
+}
+
+/* --- STATUS CHIPS --- */
+.status-pill {
+    font-weight: 800 !important;
+    font-size: 0.65rem !important;
+    text-transform: uppercase;
+    border-radius: 6px !important;
+}
+
+.pay-pill-paid { background-color: #d1fae5 !important; color: #065f46 !important; }
+.pay-pill-unpaid { background-color: #fee2e2 !important; color: #991b1b !important; }
+
+@media (max-width: 900px) {
+    .adm-appt-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .adm-search-box { width: 100%; }
+}

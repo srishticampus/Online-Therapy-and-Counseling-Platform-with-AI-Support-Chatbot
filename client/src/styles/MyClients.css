@@ -1,0 +1,123 @@
+:root {
+  --cli-navy: #0f172a;
+  --cli-blue: #3b82f6;
+  --cli-bg: #f8fafc;
+  --cli-border: #e2e8f0;
+}
+
+.clients-viewport {
+  min-height: 100vh;
+  background-color: var(--cli-bg);
+  padding: 40px 20px;
+}
+
+/* --- CLIENT GRID --- */
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.client-pro-card {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--cli-border);
+  padding: 24px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.client-pro-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px -10px rgba(0,0,0,0.1);
+  border-color: var(--cli-blue);
+}
+
+.client-card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.client-avatar {
+  width: 60px !important;
+  height: 60px !important;
+  border: 2px solid #f1f5f9;
+}
+
+.client-meta h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--cli-navy);
+  margin: 0;
+}
+
+.client-meta span {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.client-stats {
+  display: flex;
+  justify-content: space-between;
+  background: #f8fafc;
+  padding: 12px 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.stat-box { text-align: center; }
+.stat-label { display: block; font-size: 0.65rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; }
+.stat-value { font-size: 0.9rem; font-weight: 700; color: var(--cli-navy); }
+
+/* --- HISTORY DRAWER --- */
+.history-drawer-content {
+  width: 500px;
+  padding: 40px;
+  background: white;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 30px;
+  border-left: 2px solid var(--cli-border);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--cli-blue);
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 0 1px var(--cli-blue);
+}
+
+.timeline-date {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--cli-blue);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.timeline-note-card {
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid var(--cli-border);
+}
+
+.note-title { font-weight: 700; color: var(--cli-navy); margin-bottom: 5px; font-size: 0.9rem; }
+.note-text { font-size: 0.85rem; color: #475569; line-height: 1.6; }
+
+@media (max-width: 600px) {
+    .history-drawer-content { width: 100vw; }
+}
