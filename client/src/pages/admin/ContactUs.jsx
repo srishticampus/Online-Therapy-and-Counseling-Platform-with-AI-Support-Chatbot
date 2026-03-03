@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import api from '../../services/api'; // Import your Axios instance
-import toast from 'react-hot-toast'; // Import Toast
+import api from '../../services/api'; 
+import toast from 'react-hot-toast'; 
 import { CircularProgress } from '@mui/material';
 import '../../styles/ContactUs.css'; 
-
-// Material UI Icons
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
@@ -16,13 +14,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 function ContactUs() {
   const containerRef = useRef(null);
-  
-  // --- STATE MANAGEMENT ---
-  const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '', // Maps to "Department" in UI
+    subject: '',
     message: ''
   });
 
@@ -77,7 +73,6 @@ function ContactUs() {
     const toastId = toast.loading("Sending your message...");
 
     try {
-      // Endpoint matches router: app.use('/api/contact', contactRoutes) -> POST /
       const res = await api.post('/contact', formData);
 
       if (res.data.success) {

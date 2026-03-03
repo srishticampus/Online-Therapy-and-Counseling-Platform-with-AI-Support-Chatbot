@@ -7,8 +7,6 @@ import {
 import api from '../../services/api';
 import toast from 'react-hot-toast';
 import gsap from 'gsap';
-
-// Icons
 import GroupRoundedIcon from '@mui/icons-material/GroupRounded';
 import VerifiedUserRoundedIcon from '@mui/icons-material/VerifiedUserRounded';
 import PaymentsRoundedIcon from '@mui/icons-material/PaymentsRounded';
@@ -63,7 +61,6 @@ const AdminDashboard = () => {
     const safeGrowthData = growthData || [];
     const safeApptData = appointmentData || [];
 
-    // --- Custom Chart Tooltip for Pro Look ---
     const CustomTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
             return (
@@ -82,7 +79,6 @@ const AdminDashboard = () => {
     return (
         <Box className="admin-dash-viewport">
             
-            {/* 1. HEADER */}
             <div className="admin-dash-header dash-anim">
                 <div>
                     <Typography variant="h4" className="dash-title">Mission Control</Typography>
@@ -95,7 +91,6 @@ const AdminDashboard = () => {
                 </div>
             </div>
 
-            {/* 2. KPI CARDS */}
             <div className="admin-dash-stats-grid">
                 <StatCard 
                     icon={<GroupRoundedIcon />} 
@@ -127,10 +122,8 @@ const AdminDashboard = () => {
                 />
             </div>
 
-            {/* 3. MAIN ANALYTICS ROW */}
             <div className="admin-dash-main-grid">
                 
-                {/* AREA CHART */}
                 <div className="admin-chart-card dash-anim">
                     <div className="chart-header">
                         <div>
@@ -158,7 +151,6 @@ const AdminDashboard = () => {
                     </Box>
                 </div>
 
-                {/* PIE CHART */}
                 <div className="admin-chart-card dash-anim">
                     <div className="chart-header">
                         <div>
@@ -195,7 +187,6 @@ const AdminDashboard = () => {
                 </div>
             </div>
 
-            {/* 4. SECONDARY ROW */}
             <div className="admin-dash-secondary-grid dash-anim">
                 <div className="admin-chart-card">
                     <div className="chart-header">
@@ -222,7 +213,6 @@ const AdminDashboard = () => {
     );
 };
 
-// Helper Component for Cards
 const StatCard = ({ icon, color, bg, label, value }) => (
     <div className="admin-stat-card dash-anim">
         <div className="stat-icon-box" style={{ background: bg, color: color }}>

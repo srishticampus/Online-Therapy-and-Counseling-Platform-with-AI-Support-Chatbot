@@ -2,13 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../../styles/AboutUs.css'; 
-
-// Import Images
 import emotionalSupport from "../../assets/emotionalSupport.jpg";
 import FeelGood from "../../assets/FeelGood.jpg";
 import happyface from "../../assets/happyface.jpg";
-
-// Register Plugin
 gsap.registerPlugin(ScrollTrigger);
 
 function AboutUs() {
@@ -16,9 +12,7 @@ function AboutUs() {
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      
-      // 1. Hero Animation (Slightly slower, more elegant)
-      const tl = gsap.timeline();
+            const tl = gsap.timeline();
       tl.from(".about-hero-title", {
         y: 60,
         opacity: 0,
@@ -32,28 +26,25 @@ function AboutUs() {
         ease: "power3.out"
       }, "-=0.8");
 
-      // 2. Section Animations
       const sections = gsap.utils.toArray('.about-section');
 
       sections.forEach((section) => {
         const imgWrapper = section.querySelector('.about-image-wrapper');
         const content = section.querySelector('.about-content');
 
-        // Image Parallax Reveal
         gsap.from(imgWrapper, {
           scrollTrigger: {
             trigger: section,
             start: "top 85%",
             toggleActions: "play none none reverse"
           },
-          y: 50, // Move up instead of side (more modern)
+          y: 50, 
           opacity: 0,
-          scale: 0.95, // Subtle zoom in
+          scale: 0.95, 
           duration: 1,
           ease: "power3.out"
         });
 
-        // Content Slide In
         gsap.from(content, {
           scrollTrigger: {
             trigger: section,
@@ -75,7 +66,6 @@ function AboutUs() {
   return (
     <div className="about-container" ref={compRef}>
       
-      {/* --- HERO HEADER --- */}
       <section className="about-hero">
         <h1 className="about-hero-title">Who We Are</h1>
         <p className="about-hero-subtitle">
@@ -84,7 +74,6 @@ function AboutUs() {
         </p>
       </section>
 
-      {/* --- SECTION 1 --- */}
       <section className="about-section">
         <div className="about-image-wrapper">
           <img src={emotionalSupport} alt="Providing Emotional Support" className="about-img" loading='lazy'/>
@@ -104,7 +93,6 @@ function AboutUs() {
         </div>
       </section>
 
-      {/* --- SECTION 2 (Reversed by CSS) --- */}
       <section className="about-section">
         <div className="about-image-wrapper">
           <img src={FeelGood} alt="Feeling Good and Wellness" className="about-img" loading='lazy'/>
@@ -124,7 +112,6 @@ function AboutUs() {
         </div>
       </section>
 
-      {/* --- SECTION 3 --- */}
       <section className="about-section">
         <div className="about-image-wrapper">
           <img src={happyface} alt="Happy Community" className="about-img" loading='lazy'/>

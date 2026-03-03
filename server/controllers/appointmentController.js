@@ -21,7 +21,7 @@ exports.getAllCounselors = async (req, res) => {
         }
 
         const counselors = await User.find(query)
-            .select('name email profileImage specialization experience availability');
+            .select('name email profileImage specialization experience availability accountNumber ifscCode');
 
         res.json({ success: true, count: counselors.length, data: counselors });
     } catch (error) {
@@ -58,7 +58,7 @@ exports.getCounselorAvailability = async (req, res) => {
         // 3. Find existing bookings for this specific date to mark them as 'isBooked'
         const startOfDay = new Date(date);
         startOfDay.setHours(0, 0, 0, 0);
-        
+
         const endOfDay = new Date(date);
         endOfDay.setHours(23, 59, 59, 999);
 
@@ -93,9 +93,9 @@ exports.getCounselorAvailability = async (req, res) => {
 exports.bookAppointment = async (req, res) => {
     try {
         const { counselorId, date, timeSlot, issue } = req.body;
-        
+
         // Ensure you are using the User ID from the token
-        const clientId = req.user._id || req.user.id; 
+        const clientId = req.user._id || req.user.id;
 
         // Validation: Check if IDs are valid
         if (!mongoose.Types.ObjectId.isValid(counselorId)) {
@@ -115,10 +115,10 @@ exports.bookAppointment = async (req, res) => {
 
         const savedAppointment = await newAppointment.save();
 
-        res.status(201).json({ 
-            success: true, 
-            message: "Appointment saved to database!", 
-            data: savedAppointment 
+        res.status(201).json({
+            success: true,
+            message: "Appointment saved to database!",
+            data: savedAppointment
         });
     } catch (error) {
         console.error("Booking DB Error:", error);
@@ -296,8 +296,8 @@ exports.updateAppointmentStatus = async (req, res) => {
 // @access  Private (Counselor)
 exports.completeAppointment = async (req, res) => {
     try {
-        const { sessionNotes } = req.body || {}; 
-        
+        const { sessionNotes } = req.body || {};
+
         const appointmentId = req.params.id;
         const counselorId = req.user._id || req.user.id;
 
@@ -351,9 +351,9 @@ exports.setAvailability = async (req, res) => {
 
             // Check if this date exists in the new availability
             if (!availabilityArray[dateKey] || !availabilityArray[dateKey].includes(bookedTime)) {
-                return res.status(400).json({ 
-                    success: false, 
-                    message: `Cannot remove ${bookedTime} on ${dateKey}. It is currently booked by a client.` 
+                return res.status(400).json({
+                    success: false,
+                    message: `Cannot remove ${bookedTime} on ${dateKey}. It is currently booked by a client.`
                 });
             }
         }
@@ -400,15 +400,15 @@ exports.deleteDayAvailability = async (req, res) => {
         if (user.availability && user.availability[date]) {
             // Delete the key for that specific date
             delete user.availability[date];
-            
+
             // Tell Mongoose the object has changed
             user.markModified('availability');
             await user.save();
 
-            return res.json({ 
-                success: true, 
+            return res.json({
+                success: true,
                 message: `Availability for ${date} cleared successfully`,
-                data: user.availability 
+                data: user.availability
             });
         } else {
             return res.status(404).json({ message: "No slots found for this date" });
@@ -425,7 +425,7 @@ exports.getCounselorDashboardStats = async (req, res) => {
         const counselorId = req.user._id || req.user.id;
 
         // 1. Fetch all non-cancelled appointments for this counselor
-        const appointments = await Appointment.find({ 
+        const appointments = await Appointment.find({
             counselor: counselorId,
             status: { $ne: 'cancelled' }
         }).populate('client', 'name profileImage');

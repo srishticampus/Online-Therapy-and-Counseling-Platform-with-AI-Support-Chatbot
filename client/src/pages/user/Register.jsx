@@ -36,7 +36,9 @@ const Register = () => {
     licenseId: '',
     counselorCode: '',
     specialization: 'Clinical Psychology',
-    experience: ''
+    experience: '',
+    accountNumber: '',
+    ifscCode: ''
   });
 
   // Validation Regex
@@ -50,12 +52,12 @@ const Register = () => {
 
     // Real-time restriction for Name (Alphabets only)
     if (name === 'name') {
-      if (!nameRegex.test(value)) return; 
+      if (!nameRegex.test(value)) return;
     }
 
     // Real-time restriction for Experience (Numbers only)
     if (name === 'experience') {
-        if (value !== '' && !/^\d+$/.test(value)) return;
+      if (value !== '' && !/^\d+$/.test(value)) return;
     }
 
     setFormData({ ...formData, [name]: value });
@@ -71,20 +73,20 @@ const Register = () => {
 
   const validate = () => {
     if (formData.name.trim().length < 2) {
-        toast.error("Please enter a valid name");
-        return false;
+      toast.error("Please enter a valid name");
+      return false;
     }
     if (!emailRegex.test(formData.email)) {
-        toast.error("Please enter a valid email address");
-        return false;
+      toast.error("Please enter a valid email address");
+      return false;
     }
     if (role === 'counselor' && (!formData.experience || formData.experience < 0)) {
-        toast.error("Please enter a valid number of years for experience");
-        return false;
+      toast.error("Please enter a valid number of years for experience");
+      return false;
     }
     if (!passwordRegex.test(formData.password)) {
-        toast.error("Password must be 8+ characters with uppercase, lowercase, number, and special character");
-        return false;
+      toast.error("Password must be 8+ characters with uppercase, lowercase, number, and special character");
+      return false;
     }
     if (formData.password !== formData.confirmPassword) {
       toast.error("Passwords do not match!");
@@ -113,6 +115,8 @@ const Register = () => {
       data.append('counselorCode', formData.counselorCode);
       data.append('specialization', formData.specialization);
       data.append('experience', formData.experience);
+      data.append('accountNumber', formData.accountNumber);
+      data.append('ifscCode', formData.ifscCode);
     }
 
     try {
@@ -174,14 +178,14 @@ const Register = () => {
                 <label className="reg-label">Full Name</label>
                 <div className="reg-input-container">
                   <PersonOutlineIcon className="reg-input-icon" />
-                  <input 
-                    type="text" 
-                    name="name" 
-                    className="reg-field" 
-                    value={formData.name} 
-                    onChange={handleChange} 
-                    placeholder="John Doe" 
-                    required 
+                  <input
+                    type="text"
+                    name="name"
+                    className="reg-field"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="John Doe"
+                    required
                   />
                 </div>
               </div>
@@ -190,14 +194,14 @@ const Register = () => {
                 <label className="reg-label">Email Address</label>
                 <div className="reg-input-container">
                   <MailOutlineIcon className="reg-input-icon" />
-                  <input 
-                    type="email" 
-                    name="email" 
-                    className="reg-field" 
-                    value={formData.email} 
-                    onChange={handleChange} 
-                    placeholder="john@example.com" 
-                    required 
+                  <input
+                    type="email"
+                    name="email"
+                    className="reg-field"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="john@example.com"
+                    required
                   />
                 </div>
               </div>
@@ -233,16 +237,32 @@ const Register = () => {
                     <label className="reg-label">Experience (Years)</label>
                     <div className="reg-input-container">
                       <WorkHistoryIcon className="reg-input-icon" />
-                      <input 
-                        type="number" 
-                        name="experience" 
-                        className="reg-field" 
-                        value={formData.experience} 
-                        onChange={handleChange} 
-                        placeholder="e.g. 5" 
+                      <input
+                        type="number"
+                        name="experience"
+                        className="reg-field"
+                        value={formData.experience}
+                        onChange={handleChange}
+                        placeholder="e.g. 5"
                         min="0"
-                        required 
+                        required
                       />
+                    </div>
+                  </div>
+
+                  {/* Bank Details */}
+                  <div className="reg-input-group reg-animate">
+                    <label className="reg-label">Account Number</label>
+                    <div className="reg-input-container">
+                      <BadgeOutlinedIcon className="reg-input-icon" />
+                      <input type="text" name="accountNumber" className="reg-field" value={formData.accountNumber} onChange={handleChange} placeholder="Account Number" required />
+                    </div>
+                  </div>
+                  <div className="reg-input-group reg-animate">
+                    <label className="reg-label">IFSC Code</label>
+                    <div className="reg-input-container">
+                      <VerifiedUserIcon className="reg-input-icon" />
+                      <input type="text" name="ifscCode" className="reg-field" value={formData.ifscCode} onChange={handleChange} placeholder="IFSC Code" required />
                     </div>
                   </div>
                 </>
@@ -252,14 +272,14 @@ const Register = () => {
                 <label className="reg-label">Password</label>
                 <div className="reg-input-container">
                   <LockOutlinedIcon className="reg-input-icon" />
-                  <input 
-                    type={showPass ? "text" : "password"} 
-                    name="password" 
-                    className="reg-field" 
-                    value={formData.password} 
-                    onChange={handleChange} 
-                    placeholder="••••••••" 
-                    required 
+                  <input
+                    type={showPass ? "text" : "password"}
+                    name="password"
+                    className="reg-field"
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder="••••••••"
+                    required
                   />
                   <div className="reg-password-eye" onClick={() => setShowPass(!showPass)}>
                     {showPass ? <VisibilityOffIcon fontSize="small" /> : <VisibilityIcon fontSize="small" />}
@@ -271,14 +291,14 @@ const Register = () => {
                 <label className="reg-label">Confirm Password</label>
                 <div className="reg-input-container">
                   <LockOutlinedIcon className="reg-input-icon" />
-                  <input 
-                    type={showConfirmPass ? "text" : "password"} 
-                    name="confirmPassword" 
-                    className="reg-field" 
-                    value={formData.confirmPassword} 
-                    onChange={handleChange} 
-                    placeholder="••••••••" 
-                    required 
+                  <input
+                    type={showConfirmPass ? "text" : "password"}
+                    name="confirmPassword"
+                    className="reg-field"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    placeholder="••••••••"
+                    required
                   />
                   {/* Added Eye Icon for Confirm Password */}
                   <div className="reg-password-eye" onClick={() => setShowConfirmPass(!showConfirmPass)}>

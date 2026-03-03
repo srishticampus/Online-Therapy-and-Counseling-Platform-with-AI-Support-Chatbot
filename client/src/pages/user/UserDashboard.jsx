@@ -140,12 +140,12 @@ const UserDashboard = () => {
                             <div className="user-dash-appt-header">
                                 <Box display="flex" gap={1.5} alignItems="center">
                                     <Avatar 
-                                        src={`http://localhost:5000/${stats.nextSession.counselor.profileImage?.replace(/\\/g, '/')}`}
+                                        src={`http://localhost:5000/${stats.nextSession.counselor?.profileImage?.replace(/\\/g, '/')}`}
                                         sx={{ width: 40, height: 40 }}
                                     />
                                     <Box>
-                                        <Typography variant="body2" className="user-dash-doctor-name">{stats.nextSession.counselor.name}</Typography>
-                                        <Typography variant="caption" color="textSecondary">{stats.nextSession.counselor.specialization}</Typography>
+                                        <Typography variant="body2" className="user-dash-doctor-name">{stats.nextSession.counselor?.name}</Typography>
+                                        <Typography variant="caption" color="textSecondary">{stats.nextSession.counselor?.specialization}</Typography>
                                     </Box>
                                 </Box>
                                 <Chip label="Confirmed" size="small" sx={{ bgcolor: '#dcfce7', color: '#16a34a', fontWeight: 800, fontSize: '0.65rem' }} />

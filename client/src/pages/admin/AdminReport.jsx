@@ -8,7 +8,6 @@ import api from '../../services/api';
 import toast from 'react-hot-toast';
 import gsap from 'gsap';
 
-// Icons
 import GroupRoundedIcon from '@mui/icons-material/GroupRounded';
 import VerifiedUserRoundedIcon from '@mui/icons-material/VerifiedUserRounded';
 import PaymentsRoundedIcon from '@mui/icons-material/PaymentsRounded';
@@ -16,7 +15,7 @@ import EventAvailableRoundedIcon from '@mui/icons-material/EventAvailableRounded
 
 import '../../styles/AdminReport.css';
 
-const COLORS = ['#10b981', '#3b82f6']; // Green for Completed, Blue for Scheduled
+const COLORS = ['#10b981', '#3b82f6']; 
 
 const AdminReport = () => {
     const [data, setData] = useState(null);
@@ -61,18 +60,14 @@ const AdminReport = () => {
 
     return (
         <Box className="admin-rep-viewport">
-            
-            {/* HEADER */}
-            <div className="admin-rep-header admin-rep-anim">
+                        <div className="admin-rep-header admin-rep-anim">
                 <Typography className="admin-rep-title" variant="h4">Platform Intelligence</Typography>
                 <Typography variant="body2" color="textSecondary">
                     Consolidated real-time data from the MindHeal therapist network.
                 </Typography>
             </div>
 
-            {/* KPI STATS GRID */}
             <div className="admin-rep-stats-grid">
-                {/* Total Reach */}
                 <div className="admin-rep-stat-card admin-rep-anim">
                     <div className="admin-rep-icon-sq" style={{ background: '#eff6ff', color: '#3b82f6' }}>
                         <GroupRoundedIcon />
@@ -83,7 +78,6 @@ const AdminReport = () => {
                     </div>
                 </div>
 
-                {/* Active Doctors */}
                 <div className="admin-rep-stat-card admin-rep-anim">
                     <div className="admin-rep-icon-sq" style={{ background: '#f0fdf4', color: '#10b981' }}>
                         <VerifiedUserRoundedIcon />
@@ -94,7 +88,6 @@ const AdminReport = () => {
                     </div>
                 </div>
 
-                {/* Scheduled */}
                 <div className="admin-rep-stat-card admin-rep-anim">
                     <div className="admin-rep-icon-sq" style={{ background: '#fff7ed', color: '#f59e0b' }}>
                         <EventAvailableRoundedIcon />
@@ -105,7 +98,6 @@ const AdminReport = () => {
                     </div>
                 </div>
 
-                {/* Revenue */}
                 <div className="admin-rep-stat-card admin-rep-anim">
                     <div className="admin-rep-icon-sq" style={{ background: '#faf5ff', color: '#a855f7' }}>
                         <PaymentsRoundedIcon />
@@ -117,10 +109,8 @@ const AdminReport = () => {
                 </div>
             </div>
 
-            {/* MAIN CHARTS SECTION */}
             <div className="admin-rep-main-grid">
                 
-                {/* REVENUE GROWTH AREA CHART */}
                 <div className="admin-rep-chart-box admin-rep-anim">
                     <Typography variant="h6" fontWeight="800" mb={4}>Revenue Trajectory</Typography>
                     <Box height={350}>
@@ -144,7 +134,6 @@ const AdminReport = () => {
                     </Box>
                 </div>
 
-                {/* SESSION DONUT CHART */}
                 <div className="admin-rep-chart-box admin-rep-anim">
                     <Typography variant="h6" fontWeight="800" mb={3}>Booking Health</Typography>
                     <Box height={300}>

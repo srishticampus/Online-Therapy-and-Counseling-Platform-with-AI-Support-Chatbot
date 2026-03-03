@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // For navigation
+import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
-import toast from 'react-hot-toast'; // For notifications
-import api from '../../services/api'; // Your Axios instance
+import toast from 'react-hot-toast'; 
+import api from '../../services/api'; 
 import '../../styles/AdminLogin.css';
-
-// MUI Icons
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
@@ -21,7 +19,6 @@ const AdminLogin = () => {
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      // 1. ANIME MOVING OBJECTS
       gsap.to(".admin-login-obj-1", {
         x: "30vw", y: "20vh", duration: 15, repeat: -1, yoyo: true, ease: "sine.inOut"
       });
@@ -32,7 +29,6 @@ const AdminLogin = () => {
         rotate: 360, duration: 25, repeat: -1, ease: "none"
       });
 
-      // 2. ENTRANCE ANIMATIONS
       const tl = gsap.timeline();
       tl.from(".admin-login-visual-area", { width: 0, duration: 1.2, ease: "power4.inOut" })
         .from(".admin-login-glass-content", { opacity: 0, scale: 0.8, duration: 1, ease: "power3.out" }, "-=0.5")
@@ -41,33 +37,24 @@ const AdminLogin = () => {
     return () => ctx.revert();
   }, []);
 
-  // --- API INTEGRATION: ADMIN LOGIN ---
   const handleAdminSubmit = async (e) => {
     e.preventDefault();
 
-    // Start loading toast
     const toastId = toast.loading("Authorizing master access...");
     setLoading(true);
 
     try {
-      // Call your backend admin-login route
       const response = await api.post('/auth/admin-login', adminData);
 
       if (response.data.success) {
-        // 1. Store Admin Token and Role
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('role', response.data.role);
-
-        // 2. Success Feedback
         toast.success("Master access granted. Welcome, Admin.", { id: toastId });
-
-        // 3. Redirect to Admin Dashboard
         setTimeout(() => {
           navigate('/admin-dashboard');
         }, 1500);
       }
     } catch (err) {
-      // Handle 401 Unauthorized or Server errors
       const errMsg = err.response?.data?.message || "Invalid Admin Credentials";
       toast.error(errMsg, { id: toastId });
     } finally {
@@ -77,8 +64,6 @@ const AdminLogin = () => {
 
   return (
     <div className="admin-login-main-container" ref={mainRef}>
-
-      {/* LEFT: MOVING OBJECTS BACKGROUND */}
       <div className="admin-login-visual-area">
         <div className="admin-login-moving-object admin-login-obj-1"></div>
         <div className="admin-login-moving-object admin-login-obj-2"></div>
@@ -93,7 +78,6 @@ const AdminLogin = () => {
         </div>
       </div>
 
-      {/* RIGHT: PROFESSIONAL MINIMALIST FORM */}
       <div className="admin-login-form-area">
         <div className="admin-login-form-box">
 
@@ -103,7 +87,6 @@ const AdminLogin = () => {
           </div>
 
           <form onSubmit={handleAdminSubmit}>
-            {/* EMAIL */}
             <div className="admin-login-field-group">
               <label className="admin-login-field-label">Official Email</label>
               <div className="admin-login-input-wrapper">
@@ -120,7 +103,6 @@ const AdminLogin = () => {
               </div>
             </div>
 
-            {/* PASSWORD */}
             <div className="admin-login-field-group">
               <label className="admin-login-field-label">Security Key</label>
               <div className="admin-login-input-wrapper">

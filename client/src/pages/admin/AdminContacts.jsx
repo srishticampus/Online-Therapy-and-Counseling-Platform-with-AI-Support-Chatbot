@@ -18,16 +18,14 @@ const AdminContact = () => {
     const [messages, setMessages] = useState([]);
     const [selectedMsg, setSelectedMsg] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [filter, setFilter] = useState('all'); // all, pending, resolved
+    const [filter, setFilter] = useState('all'); 
 
-    // --- MODAL STATE ---
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
     const [targetId, setTargetId] = useState(null);
     const [deleting, setDeleting] = useState(false);
 
     const detailRef = useRef(null);
 
-    // --- FETCH MESSAGES ---
     const fetchMessages = async () => {
         setLoading(true);
         try {
@@ -46,7 +44,6 @@ const AdminContact = () => {
         fetchMessages();
     }, []);
 
-    // --- GSAP ANIMATION FOR DETAIL VIEW ---
     useEffect(() => {
         if (selectedMsg && detailRef.current) {
             gsap.fromTo(detailRef.current, 
@@ -56,7 +53,6 @@ const AdminContact = () => {
         }
     }, [selectedMsg]);
 
-    // --- HANDLER: MARK RESOLVED ---
     const handleResolve = async (id) => {
         const tid = toast.loading("Updating status...");
         try {
@@ -74,13 +70,11 @@ const AdminContact = () => {
         }
     };
 
-    // --- HANDLER: OPEN DELETE MODAL ---
     const handleDeleteClick = (id) => {
         setTargetId(id);
         setDeleteModalOpen(true);
     };
 
-    // --- HANDLER: CONFIRM DELETE ---
     const handleConfirmDelete = async () => {
         setDeleting(true);
         const tid = toast.loading("Deleting message...");
@@ -91,7 +85,6 @@ const AdminContact = () => {
             const remaining = messages.filter(m => m._id !== targetId);
             setMessages(remaining);
             
-            // If the deleted message was open, close the detail view
             if (selectedMsg?._id === targetId) setSelectedMsg(null);
             
             setDeleteModalOpen(false);
@@ -102,7 +95,6 @@ const AdminContact = () => {
         }
     };
 
-    // Filter Logic
     const filteredList = messages.filter(msg => 
         filter === 'all' ? true : msg.status === filter
     );
@@ -110,7 +102,6 @@ const AdminContact = () => {
     return (
         <div className="inbox-wrapper">
             
-            {/* --- LEFT: LIST PANEL --- */}
             <div className="inbox-list-panel">
                 <div className="inbox-header">
                     <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -163,7 +154,6 @@ const AdminContact = () => {
                 </div>
             </div>
 
-            {/* --- RIGHT: READING PANE --- */}
             <div className="inbox-detail-panel">
                 {selectedMsg ? (
                     <>
@@ -182,7 +172,6 @@ const AdminContact = () => {
                                     </Tooltip>
                                 )}
                                 <Tooltip title="Delete Message">
-                                    {/* Updated to open Modal */}
                                     <IconButton onClick={() => handleDeleteClick(selectedMsg._id)} color="error">
                                         <DeleteOutlineRoundedIcon />
                                     </IconButton>
@@ -222,7 +211,6 @@ const AdminContact = () => {
                 )}
             </div>
 
-            {/* --- DELETE CONFIRMATION MODAL --- */}
             <Dialog 
                 open={deleteModalOpen} 
                 onClose={() => !deleting && setDeleteModalOpen(false)}

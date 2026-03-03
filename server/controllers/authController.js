@@ -5,7 +5,7 @@ const sendEmail = require('../utils/emailService');
 // --- REGISTER ---
 exports.register = async (req, res, next) => {
   try {
-    const { name, email, password, role, licenseId, counselorCode } = req.body;
+    const { name, email, password, role, licenseId, counselorCode, accountNumber, ifscCode } = req.body;
 
     // 1. Manual Check for common fields
     const userExists = await User.findOne({ email });
@@ -23,8 +23,8 @@ exports.register = async (req, res, next) => {
 
     res.status(201).json({
       success: true,
-      message: role === 'counselor' 
-        ? "Registration successful! Pending Admin Approval." 
+      message: role === 'counselor'
+        ? "Registration successful! Pending Admin Approval."
         : "Registration successful!"
     });
 
@@ -32,8 +32,8 @@ exports.register = async (req, res, next) => {
     // 4. CATCH UNIQUE CONSTRAINT ERRORS (License ID / Counselor Code)
     if (error.code === 11000) {
       const field = Object.keys(error.keyValue)[0];
-      return res.status(400).json({ 
-        message: `${field === 'licenseId' ? 'License ID' : 'Counselor Code'} already exists in our system.` 
+      return res.status(400).json({
+        message: `${field === 'licenseId' ? 'License ID' : 'Counselor Code'} already exists in our system.`
       });
     }
     next(error);
@@ -41,22 +41,22 @@ exports.register = async (req, res, next) => {
 };
 // --- VERIFY OTP ONLY ---
 exports.verifyOtp = async (req, res) => {
-    try {
-        const { email, otp } = req.body;
-        const user = await User.findOne({ 
-            email, 
-            otp, 
-            otpExpires: { $gt: Date.now() } // Check if code is still valid
-        });
+  try {
+    const { email, otp } = req.body;
+    const user = await User.findOne({
+      email,
+      otp,
+      otpExpires: { $gt: Date.now() } // Check if code is still valid
+    });
 
-        if (!user) {
-            return res.status(400).json({ success: false, message: "Invalid or expired code." });
-        }
-
-        res.status(200).json({ success: true, message: "OTP Verified." });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+    if (!user) {
+      return res.status(400).json({ success: false, message: "Invalid or expired code." });
     }
+
+    res.status(200).json({ success: true, message: "OTP Verified." });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 // --- LOGIN ---
 exports.login = async (req, res, next) => {
@@ -94,60 +94,60 @@ exports.login = async (req, res, next) => {
 
 // --- ADMIN LOGIN (Local) ---
 exports.adminLogin = async (req, res) => {
-    const { email, password } = req.body;
-    if (email === "admin@mindheal.com" && password === "admin123") {
-        const token = jwt.sign({ role: 'admin' }, process.env.JWT_SECRET, { expiresIn: '1d' });
-        return res.status(200).json({ success: true, token, role: 'admin' });
-        
-    }
-    res.status(401).json({ message: "Invalid Admin Access" });
+  const { email, password } = req.body;
+  if (email === "admin@mindheal.com" && password === "admin123") {
+    const token = jwt.sign({ role: 'admin' }, process.env.JWT_SECRET, { expiresIn: '1d' });
+    return res.status(200).json({ success: true, token, role: 'admin' });
+
+  }
+  res.status(401).json({ message: "Invalid Admin Access" });
 };
 
 // --- FORGOT PASSWORD ---
 exports.forgotPassword = async (req, res) => {
-    try {
-        const { email } = req.body;
-        const user = await User.findOne({ email });
-        if (!user) return res.status(404).json({ message: "User not found" });
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) return res.status(404).json({ message: "User not found" });
 
-        const otp = Math.floor(100000 + Math.random() * 900000).toString();
-        user.otp = otp;
-        user.otpExpires = Date.now() + 10 * 60 * 1000; // 10 mins
-        await user.save();
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    user.otp = otp;
+    user.otpExpires = Date.now() + 10 * 60 * 1000; // 10 mins
+    await user.save();
 
-        const emailSent = await sendEmail(email, "Password Reset OTP", `Your MindHeal verification code is: ${otp}`);
-        
-        if (emailSent) {
-            res.status(200).json({ success: true, message: "OTP sent to email" });
-        } else {
-            res.status(500).json({ message: "Failed to send email" });
-        }
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+    const emailSent = await sendEmail(email, "Password Reset OTP", `Your MindHeal verification code is: ${otp}`);
+
+    if (emailSent) {
+      res.status(200).json({ success: true, message: "OTP sent to email" });
+    } else {
+      res.status(500).json({ message: "Failed to send email" });
     }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
 // --- RESET PASSWORD ---
 exports.resetPassword = async (req, res) => {
-    try {
-        const { email, otp, newPassword } = req.body;
-        const user = await User.findOne({ 
-            email, 
-            otp, 
-            otpExpires: { $gt: Date.now() } 
-        });
+  try {
+    const { email, otp, newPassword } = req.body;
+    const user = await User.findOne({
+      email,
+      otp,
+      otpExpires: { $gt: Date.now() }
+    });
 
-        if (!user) return res.status(400).json({ message: "Invalid or expired OTP" });
+    if (!user) return res.status(400).json({ message: "Invalid or expired OTP" });
 
-        user.password = newPassword;
-        user.otp = undefined;
-        user.otpExpires = undefined;
-        await user.save();
+    user.password = newPassword;
+    user.otp = undefined;
+    user.otpExpires = undefined;
+    await user.save();
 
-        res.status(200).json({ success: true, message: "Password updated" });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
+    res.status(200).json({ success: true, message: "Password updated" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
 exports.updateProfile = async (req, res) => {
@@ -161,14 +161,14 @@ exports.updateProfile = async (req, res) => {
 
     // 1. CHECK FOR EMAIL DUPLICATION
     if (email) {
-      const emailExists = await User.findOne({ 
-        email: email.toLowerCase(), 
+      const emailExists = await User.findOne({
+        email: email.toLowerCase(),
         _id: { $ne: userId } // Find someone with this email who IS NOT the current user
       });
       if (emailExists) {
-        return res.status(400).json({ 
-          success: false, 
-          message: "This email address is already linked to another account." 
+        return res.status(400).json({
+          success: false,
+          message: "This email address is already linked to another account."
         });
       }
     }
@@ -211,19 +211,19 @@ exports.updateProfile = async (req, res) => {
   }
 };
 exports.getProfile = async (req, res) => {
-    try {
-        // req.user is attached by the 'protect' middleware
-        const user = await User.findById(req.user._id || req.user.id).select('-password');
-        
-        if (!user) {
-            return res.status(404).json({ success: false, message: "User not found" });
-        }
+  try {
+    // req.user is attached by the 'protect' middleware
+    const user = await User.findById(req.user._id || req.user.id).select('-password');
 
-        res.status(200).json({
-            success: true,
-            user
-        });
-    } catch (error) {
-        res.status(500).json({ success: false, message: error.message });
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
     }
+
+    res.status(200).json({
+      success: true,
+      user
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
 };

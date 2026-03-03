@@ -17,7 +17,7 @@ import '../../styles/Profile.css';
 const Profile = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(false);
-    
+
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
     const [formData, setFormData] = useState({ ...user });
     const [imageFile, setImageFile] = useState(null);
@@ -94,7 +94,7 @@ const Profile = () => {
 
         setLoading(true);
         const data = new FormData();
-        
+
         // Append form fields
         Object.keys(formData).forEach(key => {
             // Don't send profileImage string if we have a new file
@@ -129,21 +129,21 @@ const Profile = () => {
             </div>
             {isEditing ? (
                 isDropdown ? (
-                    <select 
-                        name={name} 
-                        className="profile-input-field" 
-                        value={formData[name] || ''} 
+                    <select
+                        name={name}
+                        className="profile-input-field"
+                        value={formData[name] || ''}
                         onChange={handleChange}
                     >
                         {options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                     </select>
                 ) : (
-                    <input 
-                        type={type} 
-                        name={name} 
-                        className="profile-input-field" 
-                        value={formData[name] || ''} 
-                        onChange={handleChange} 
+                    <input
+                        type={type}
+                        name={name}
+                        className="profile-input-field"
+                        value={formData[name] || ''}
+                        onChange={handleChange}
                         autoComplete="off"
                     />
                 )
@@ -160,7 +160,7 @@ const Profile = () => {
     return (
         <div className="profile-viewport" ref={cardRef}>
             <div className="profile-main-card">
-                
+
                 {/* HEADER */}
                 <div className="profile-card-header">
                     <div className="header-info">
@@ -197,7 +197,7 @@ const Profile = () => {
                             </div>
                             <input type="file" hidden ref={fileInputRef} onChange={handleImageUpdate} accept="image/*" />
                         </div>
-                        
+
                         <div className="sidebar-identity">
                             <Typography variant="h6" className="sidebar-name">{user.name}</Typography>
                             <Chip label={user.role.toUpperCase()} className={`role-chip ${user.role}`} />
@@ -226,8 +226,13 @@ const Profile = () => {
                                 <div className="grid-row">
                                     {/* Display suffix "Years" only in view mode */}
                                     {renderField("Experience", "experience", `${user.experience || 0} Years`, <WorkRoundedIcon />, "text")}
-                                    {renderField("Specialization", "specialization", user.specialization, <SchoolRoundedIcon />, "text", true, 
+                                    {renderField("Specialization", "specialization", user.specialization, <SchoolRoundedIcon />, "text", true,
                                         ["Clinical Psychology", "Anxiety Specialist", "Depression Specialist", "Marriage & Family", "Trauma Support"])}
+                                </div>
+                                <Typography className="section-divider">Bank Details (for Payments)</Typography>
+                                <div className="grid-row">
+                                    {renderField("Account Number", "accountNumber", user.accountNumber, <SecurityRoundedIcon />)}
+                                    {renderField("IFSC Code", "ifscCode", user.ifscCode, <CheckCircleRoundedIcon />)}
                                 </div>
                             </>
                         )}
@@ -237,9 +242,9 @@ const Profile = () => {
                 {/* FOOTER SAVE BUTTON */}
                 <Fade in={isEditing}>
                     <div className="profile-footer-bar">
-                        <Button 
+                        <Button
                             className="btn-save-final"
-                            onClick={handleSaveProfile} 
+                            onClick={handleSaveProfile}
                             disabled={loading}
                             startIcon={loading ? <CircularProgress size={20} color="inherit" /> : <CheckCircleRoundedIcon />}
                         >

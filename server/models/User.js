@@ -26,12 +26,17 @@ const userSchema = new mongoose.Schema({
 
   specialization: { type: String },
   experience: { type: Number },
+
+  // Bank Details for Counselors
+  accountNumber: { type: String, trim: true },
+  ifscCode: { type: String, trim: true },
+
   isApproved: { type: Boolean, default: false },
 
   // Counselor Availability
   availability: {
-    type: mongoose.Schema.Types.Mixed, 
-    default: {} 
+    type: mongoose.Schema.Types.Mixed,
+    default: {}
   },
 
   otp: { type: String },

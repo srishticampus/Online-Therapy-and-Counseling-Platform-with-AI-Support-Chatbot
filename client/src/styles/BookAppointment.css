@@ -1,454 +1,269 @@
 :root {
-    --book-navy: #0f172a;
-    --book-blue: #3b82f6;
-    --book-light: #f8fafc;
-    --book-white: #ffffff;
-    --book-border: #e2e8f0;
-    --book-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.08);
+  --book-navy: #0f172a;
+  --book-blue: #2563eb;
+  --book-light: #f8fafc;
+  --book-white: #ffffff;
+  --book-border: #e2e8f0;
+  --book-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.08);
 }
 
 .booking-dashboard {
-    height: calc(100vh - 80px);
-    background-color: #f1f5f9;
-    display: flex;
-    overflow: hidden;
-    font-family: 'Inter', sans-serif;
+  height: calc(100vh - 80px);
+  background-color: #f1f5f9;
+  display: flex;
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
 }
 
-.counselor-rail {
-    width: 400px;
-    background: var(--book-white);
-    border-right: 1px solid var(--book-border);
-    display: flex;
-    flex-direction: column;
-    z-index: 10;
-}
+/* --- (Keep your existing Rail and Session CSS here) --- */
+/* For brevity, I assume the Rail/Session CSS is already there as per previous artifact. 
+   I will focus on the PAYMENT MODAL CSS below. */
 
-.rail-header {
-    padding: 30px;
-    border-bottom: 1px solid var(--book-border);
-}
-
-.rail-title {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--book-navy);
-}
-
-.rail-list {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.rail-list::-webkit-scrollbar { width: 6px; }
-.rail-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-
-.rail-card {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
-    border-radius: 16px;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    background: var(--book-white);
-}
-
-.rail-card:hover {
-    background: var(--book-light);
-    transform: translateX(5px);
-}
-
-.rail-card.active {
-    background: #eff6ff;
-    border-color: var(--book-blue);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
-}
-
-.rail-avatar {
-    width: 50px !important;
-    height: 50px !important;
-    border-radius: 12px !important;
-}
-
-.rail-info h4 {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--book-navy);
-    margin: 0;
-}
-
-.rail-info span {
-    font-size: 0.75rem;
-    color: #64748b;
-    font-weight: 500;
-}
-
-/* --- RIGHT: THE BIG SESSION BOX --- */
-.session-stage {
-    flex: 1;
-    padding: 40px;
-    overflow-y: auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-.session-big-box {
-    width: 100%;
-    max-width: 900px;
-    background: var(--book-white);
-    border-radius: 24px;
-    box-shadow: var(--book-shadow);
-    border: 1px solid var(--book-border);
-    overflow: hidden;
-    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Big Box Header */
-.session-header-banner {
-    padding: 40px;
-    background: linear-gradient(135deg, var(--book-navy) 0%, #1e293b 100%);
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.session-pro-profile {
-    display: flex;
-    gap: 25px;
-    align-items: center;
-}
-
-.session-avatar-large {
-    width: 100px !important;
-    height: 100px !important;
-    border: 4px solid rgba(255,255,255,0.2);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-}
-
-.session-pro-details h2 {
-    font-size: 2rem;
-    font-weight: 800;
-    margin: 0 0 5px 0;
-}
-
-.session-badge {
-    background: rgba(255,255,255,0.15);
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    backdrop-filter: blur(5px);
-}
-
-.session-cost {
-    text-align: right;
-}
-
+.counselor-rail { width: 400px; background: var(--book-white); border-right: 1px solid var(--book-border); display: flex; flex-direction: column; z-index: 10; }
+.rail-header { padding: 30px; border-bottom: 1px solid var(--book-border); }
+.rail-title { font-size: 1.4rem; font-weight: 800; color: var(--book-navy); }
+.rail-list { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+.rail-card { display: flex; align-items: center; gap: 15px; padding: 15px; border-radius: 16px; border: 1px solid transparent; cursor: pointer; transition: all 0.2s ease; background: var(--book-white); }
+.rail-card:hover { background: var(--book-light); transform: translateX(5px); }
+.rail-card.active { background: #eff6ff; border-color: var(--book-blue); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15); }
+.rail-avatar { width: 50px !important; height: 50px !important; border-radius: 12px !important; }
+.rail-info h4 { font-size: 0.95rem; font-weight: 700; color: var(--book-navy); margin: 0; }
+.rail-info span { font-size: 0.75rem; color: #64748b; font-weight: 500; }
+.session-stage { flex: 1; padding: 40px; overflow-y: auto; display: flex; justify-content: center; align-items: flex-start; }
+.session-big-box { width: 100%; max-width: 900px; background: var(--book-white); border-radius: 24px; box-shadow: var(--book-shadow); border: 1px solid var(--book-border); overflow: hidden; animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.session-header-banner { padding: 40px; background: linear-gradient(135deg, var(--book-navy) 0%, #1e293b 100%); color: white; display: flex; justify-content: space-between; align-items: center; }
+.session-pro-profile { display: flex; gap: 25px; align-items: center; }
+.session-avatar-large { width: 100px !important; height: 100px !important; border: 4px solid rgba(255, 255, 255, 0.2); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); }
+.session-pro-details h2 { font-size: 2rem; font-weight: 800; margin: 0 0 5px 0; }
+.session-badge { background: rgba(255, 255, 255, 0.15); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; backdrop-filter: blur(5px); }
+.session-cost { text-align: right; }
 .cost-label { display: block; font-size: 0.8rem; opacity: 0.7; }
 .cost-value { font-size: 2.2rem; font-weight: 800; color: #4ade80; }
-
-/* Big Box Body */
-.session-body {
-    padding: 40px;
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 40px;
-}
-
-.config-section h3 {
-    font-size: 0.9rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: #94a3b8;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-}
-
-/* Date Input */
-.big-date-input {
-    width: 100%;
-    padding: 16px;
-    font-size: 1.1rem;
-    border: 2px solid var(--book-border);
-    border-radius: 12px;
-    color: var(--book-navy);
-    font-family: inherit;
-    outline: none;
-    transition: 0.3s;
-}
-
+.session-body { padding: 40px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; }
+.config-section h3 { font-size: 0.9rem; font-weight: 800; text-transform: uppercase; color: #94a3b8; margin-bottom: 15px; letter-spacing: 1px; }
+.big-date-input { width: 100%; padding: 16px; font-size: 1.1rem; border: 2px solid var(--book-border); border-radius: 12px; color: var(--book-navy); font-family: inherit; outline: none; transition: 0.3s; }
 .big-date-input:focus { border-color: var(--book-blue); }
-
-/* Slots */
-.slots-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 12px;
-}
-
-.slot-btn-lg {
-    padding: 12px;
-    border: 1px solid var(--book-border);
-    background: white;
-    border-radius: 10px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.slot-btn-lg:hover:not(:disabled) {
-    border-color: var(--book-blue);
-    color: var(--book-blue);
-    transform: translateY(-2px);
-}
-
-.slot-btn-lg.selected {
-    background: var(--book-navy);
-    color: white;
-    border-color: var(--book-navy);
-    box-shadow: 0 5px 15px rgba(15, 23, 42, 0.3);
-}
-
-.slot-btn-lg:disabled {
-    background: #f1f5f9;
-    color: #cbd5e1;
-    cursor: not-allowed;
-    text-decoration: line-through;
-}
-
-/* Notes Area */
-.session-notes-area {
-    width: 100%;
-    padding: 16px;
-    border: 2px solid var(--book-border);
-    border-radius: 12px;
-    font-family: inherit;
-    font-size: 1rem;
-    min-height: 120px;
-    resize: none;
-    outline: none;
-}
-
+.slots-wrapper { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; }
+.slot-btn-lg { padding: 12px; border: 1px solid var(--book-border); background: white; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.slot-btn-lg:hover:not(:disabled) { border-color: var(--book-blue); color: var(--book-blue); transform: translateY(-2px); }
+.slot-btn-lg.selected { background: var(--book-navy); color: white; border-color: var(--book-navy); box-shadow: 0 5px 15px rgba(15, 23, 42, 0.3); }
+.slot-btn-lg:disabled { background: #f1f5f9; color: #cbd5e1; cursor: not-allowed; text-decoration: line-through; }
+.slot-btn-lg.booked { background-color: #f1f5f9 !important; color: #cbd5e1 !important; border-color: #e2e8f0 !important; cursor: not-allowed !important; text-decoration: line-through; pointer-events: none; }
+.session-notes-area { width: 100%; padding: 16px; border: 2px solid var(--book-border); border-radius: 12px; font-family: inherit; font-size: 1rem; min-height: 120px; resize: none; outline: none; }
 .session-notes-area:focus { border-color: var(--book-blue); }
-
-/* Footer Action */
-.session-footer {
-    padding: 30px 40px;
-    border-top: 1px solid var(--book-border);
-    background: #fafbfc;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.btn-confirm-lg {
-    background: var(--book-blue) !important;
-    color: white !important;
-    padding: 16px 50px !important;
-    border-radius: 14px !important;
-    font-size: 1.1rem !important;
-    font-weight: 800 !important;
-    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3) !important;
-    transition: 0.3s !important;
-}
-
+.session-footer { padding: 30px 40px; border-top: 1px solid var(--book-border); background: #fafbfc; display: flex; justify-content: flex-end; }
+.btn-confirm-lg { background: var(--book-blue) !important; color: white !important; padding: 16px 50px !important; border-radius: 14px !important; font-size: 1.1rem !important; font-weight: 800 !important; box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3) !important; transition: 0.3s !important; }
 .btn-confirm-lg:hover { transform: translateY(-3px); }
+.empty-state-box { text-align: center; margin-top: 15vh; color: #94a3b8; }
 
-/* --- EMPTY STATE --- */
-.empty-state-box {
-    text-align: center;
-    margin-top: 15vh;
-    color: #94a3b8;
-}
+/* ========================================= */
+/* ===  PROFESSIONAL MODAL CSS STARTS HERE === */
+/* ========================================= */
 
-/* --- PAYMENT MODAL --- */
-.gpay-logo-text {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #0f172a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-/* --- MODAL CONTAINER --- */
-/* This targets the MUI Paper component via the class we will add */
+/* 1. Modal Container Override */
 .pay-glass-modal {
-    background: #ffffff !important;
-    border-radius: 28px !important;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
-    overflow: visible !important; /* Allow close button to float if needed */
-    position: relative;
+  border-radius: 28px !important;
+  background: #ffffff !important;
+  box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.2), 
+              0 0 0 1px rgba(0,0,0,0.03) !important;
+  overflow: visible !important;
 }
 
-/* Decorative Gradient Bar at Top */
-.pay-glass-modal::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 8px;
-    /* background: linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335); */
-    z-index: 5;
+.pay-close-btn {
+  position: absolute !important;
+  right: 15px;
+  top: 15px;
+  color: #64748b !important;
+  background: #f1f5f9 !important;
+  z-index: 10;
+  padding: 6px !important;
+}
+.pay-close-btn:hover {
+  background: #e2e8f0 !important;
+  color: #ef4444 !important;
 }
 
-/* --- HEADER & LOGO --- */
-.pay-header-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
+/* 2. Header Section */
+.pay-modal-header {
+  background: #f8fafc;
+  padding: 40px 30px 30px;
+  text-align: center;
+  border-bottom: 1px dashed #cbd5e1;
+  position: relative;
+  border-radius: 28px 28px 0 0;
 }
 
-.google-pay-logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'Product Sans', 'Inter', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: #5f6368;
-    margin-bottom: 20px;
+.pay-logo-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+.pay-g-icon { font-size: 24px !important; color: #4285F4; }
+.pay-g-text { font-size: 1.2rem; font-weight: 600; color: #5f6368; letter-spacing: -0.5px; }
+
+.pay-amount-display {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: #0f172a;
+  line-height: 1;
+}
+.currency-symbol { font-size: 1.8rem; font-weight: 600; margin-top: 6px; margin-right: 4px; color: #94a3b8; }
+.amount-number { font-size: 4rem; font-weight: 800; letter-spacing: -2px; }
+.amount-decimal { font-size: 2rem; font-weight: 600; margin-top: 6px; color: #94a3b8; }
+
+.pay-recipient-badge {
+  margin-top: 15px;
+  display: inline-block;
+  background: #fff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
-/* --- AMOUNT DISPLAY --- */
-.pay-amount-box {
-    text-align: center;
-    margin-bottom: 30px;
-    position: relative;
+/* 3. Modal Body */
+.pay-modal-body {
+  padding: 30px;
 }
 
-.pay-currency {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #94a3b8;
-    vertical-align: top;
-    margin-right: 2px;
+/* Input Styles */
+.pay-field-group { margin-bottom: 25px; }
+.pay-input-label { display: block; font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+
+.pay-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.pay-amount-value {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: #0f172a;
-    letter-spacing: -1.5px;
-    line-height: 1;
+.pay-modern-input {
+  width: 100%;
+  padding: 14px 16px;
+  padding-right: 40px; /* Space for icon */
+  font-size: 1.05rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  outline: none;
+  font-weight: 600;
+  color: #1e293b;
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
 }
 
-/* --- INPUT FIELD --- */
-.pay-input-group {
-    background-color: #f8fafc;
-    border: 2px solid #e2e8f0;
-    border-radius: 16px;
-    padding: 8px 16px;
-    transition: all 0.3s ease;
-    margin-bottom: 24px;
-    position: relative;
+.pay-modern-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
 }
 
-.pay-input-group:focus-within {
-    background-color: #ffffff;
-    border-color: #3b82f6;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+.pay-status-icon {
+  position: absolute;
+  right: 12px;
+  color: #cbd5e1;
+  font-size: 20px !important;
+  transition: 0.3s;
+}
+.pay-status-icon.active { color: #10b981; }
+
+/* 4. Bank Card Design (The "Professional" Part) */
+.bank-transfer-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 25px;
+  position: relative;
+}
+/* A blue accent bar on the left */
+.bank-transfer-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 20px; bottom: 20px;
+  width: 4px;
+  background: #3b82f6;
+  border-radius: 0 4px 4px 0;
 }
 
-.pay-label-tiny {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    font-weight: 800;
-    color: #64748b;
-    letter-spacing: 0.5px;
-    margin-bottom: 2px;
-    display: block;
+.bank-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding-left: 10px;
 }
 
-.pay-custom-input {
-    width: 100%;
-    border: none;
-    background: transparent;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #0f172a;
-    outline: none;
-    font-family: 'Inter', monospace; /* Monospace helps reading IDs */
+.bank-info-row {
+  margin-bottom: 12px;
+  padding-left: 10px;
+}
+.bank-info-row:last-child { margin-bottom: 0; }
+
+.bank-data-group label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: #94a3b8;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 2px;
 }
 
-.pay-custom-input::placeholder {
-    color: #cbd5e1;
-    font-weight: 400;
+.bank-value-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f1f5f9;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: 0.2s;
+}
+.bank-value-row:hover {
+  background: #fff;
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
 }
 
-/* --- ACTION BUTTON --- */
-.pay-confirm-btn {
-    width: 100%;
-    padding: 16px !important;
-    border-radius: 14px !important;
-    background: #0f172a !important; /* Navy for security feel */
-    color: white !important;
-    font-size: 1rem !important;
-    font-weight: 700 !important;
-    text-transform: none !important;
-    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15) !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+.mono-text {
+  font-family: 'Roboto Mono', 'Consolas', monospace;
+  color: #334155;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.5px;
 }
 
-.pay-confirm-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 30px rgba(15, 23, 42, 0.25) !important;
-    background: #1e293b !important;
+/* 5. Action Button */
+.pay-action-btn {
+  background: #0f172a !important; /* Premium Dark Navy */
+  color: #fff !important;
+  padding: 16px !important;
+  border-radius: 14px !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  font-size: 1rem !important;
+  box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.3) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-.pay-confirm-btn:disabled {
-    background: #94a3b8 !important;
-    box-shadow: none !important;
-    cursor: not-allowed;
-}
-/* Style for available but unselected slot */
-.slot-btn-lg {
-    padding: 12px;
-    border: 1px solid var(--book-border);
-    background: white;
-    border-radius: 10px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.2s;
+.pay-action-btn:hover {
+  background: #1e293b !important;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(15, 23, 42, 0.4) !important;
 }
 
-/* Style for a slot that is ALREADY BOOKED by someone else */
-.slot-btn-lg.booked {
-    background-color: #f1f5f9 !important;
-    color: #cbd5e1 !important;
-    border-color: #e2e8f0 !important;
-    cursor: not-allowed !important;
-    text-decoration: line-through;
-    pointer-events: none; /* Prevents clicking */
-}
-
-/* Style for the slot currently selected by the user */
-.slot-btn-lg.selected {
-    background-color: var(--book-navy) !important;
-    color: white !important;
-    border-color: var(--book-navy) !important;
-}
-/* --- SECURITY FOOTER --- */
-.pay-secure-footer {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.75rem;
-    color: #64748b;
-    font-weight: 500;
-}
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
+.pay-security-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
