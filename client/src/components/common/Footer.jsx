@@ -15,7 +15,6 @@ const Footer = () => {
     <footer className="footer-main-container">
       <div className="footer-content-grid">
         
-        {/* COLUMN 1: BRAND */}
         <div className="footer-brand-side">
           <div className="footer-logo-box">
             <PsychologyIcon sx={{ color: '#3b82f6', fontSize: 35 }} />
@@ -32,8 +31,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* COLUMN 2: QUICK LINKS */}
-        <div>
+\        <div>
           <h4 className="footer-heading">Ecosystem</h4>
           <ul className="footer-list">
             <li><Link to="/" className="footer-list-link">Home Portal</Link></li>
@@ -43,7 +41,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* COLUMN 3: RESOURCES */}
         <div>
           <h4 className="footer-heading">Support</h4>
           <ul className="footer-list">
@@ -54,7 +51,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* COLUMN 4: EMERGENCY */}
         <div>
           <h4 className="footer-heading">Emergency</h4>
           <div className="footer-crisis-box">
@@ -82,7 +78,6 @@ const Footer = () => {
         </Box>
       </div>
 
-      {/* MEDICAL DISCLAIMER - CRITICAL FOR PROFESSIONALISM */}
       <div className="footer-disclaimer-box">
         <p className="footer-disclaimer-text">
           Disclaimer: MindHeal provides AI support and connects users with licensed therapists. The AI chatbot is not a replacement for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health providers with any questions you may have regarding a medical condition.

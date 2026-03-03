@@ -8,14 +8,13 @@
 }
 
 .booking-dashboard {
-    height: calc(100vh - 80px); /* Full height minus navbar */
+    height: calc(100vh - 80px);
     background-color: #f1f5f9;
     display: flex;
     overflow: hidden;
     font-family: 'Inter', sans-serif;
 }
 
-/* --- LEFT: COUNSELOR RAIL --- */
 .counselor-rail {
     width: 400px;
     background: var(--book-white);
@@ -45,11 +44,9 @@
     gap: 15px;
 }
 
-/* Custom Scrollbar */
 .rail-list::-webkit-scrollbar { width: 6px; }
 .rail-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
-/* Counselor Mini Card */
 .rail-card {
     display: flex;
     align-items: center;

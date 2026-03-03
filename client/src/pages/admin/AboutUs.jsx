@@ -87,7 +87,7 @@ function AboutUs() {
       {/* --- SECTION 1 --- */}
       <section className="about-section">
         <div className="about-image-wrapper">
-          <img src={emotionalSupport} alt="Providing Emotional Support" className="about-img" />
+          <img src={emotionalSupport} alt="Providing Emotional Support" className="about-img" loading='lazy'/>
         </div>
         <div className="about-content">
           <h2 className="about-heading">
@@ -107,7 +107,7 @@ function AboutUs() {
       {/* --- SECTION 2 (Reversed by CSS) --- */}
       <section className="about-section">
         <div className="about-image-wrapper">
-          <img src={FeelGood} alt="Feeling Good and Wellness" className="about-img" />
+          <img src={FeelGood} alt="Feeling Good and Wellness" className="about-img" loading='lazy'/>
         </div>
         <div className="about-content">
           <h2 className="about-heading">
@@ -127,7 +127,7 @@ function AboutUs() {
       {/* --- SECTION 3 --- */}
       <section className="about-section">
         <div className="about-image-wrapper">
-          <img src={happyface} alt="Happy Community" className="about-img" />
+          <img src={happyface} alt="Happy Community" className="about-img" loading='lazy'/>
         </div>
         <div className="about-content">
           <h2 className="about-heading">

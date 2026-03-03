@@ -1,4 +1,3 @@
-// client/src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/admin/LandingPage';
@@ -34,7 +33,6 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import ManageResource from './pages/admin/ManageResource';
 import AdminContacts from './pages/admin/AdminContacts';
 
-// Placeholder Pages for testing
 
 function App() {
   return (
@@ -45,18 +43,17 @@ function App() {
         toastOptions={{
           style: {
             borderRadius: '10px',
-            background: '#0f172a', // Navy theme
+            background: '#0f172a', 
             color: '#fff',
           },
         }}
       />
-      {/* Navbar sits outside Routes so it appears on all pages */}
 
 
       <Routes>
         <Route path="/" element={<><Navbar /><LandingPage /><Footer /></>} />
         <Route path="/about" element={<><Navbar /><AboutUs /><Footer /></>} />
-        <Route path="/contactus" element={<><Navbar /><ContactUs /><Footer /></>} />
+        <Route path="/contact" element={<><Navbar /><ContactUs /><Footer /></>} />
 
         <Route path="/admin/login" element={<><Navbar /><AdminLogin /><Footer /></>} />
         <Route path="/login" element={<><Navbar /><UserLogin /><Footer /></>} />
