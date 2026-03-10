@@ -81,15 +81,9 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/user/ai-chat" element={<Aichat />} />
           <Route path="/user/robot-ai" element={<RobotAi />} />
-          <Route path="/user/book" element={<BookAppoinment />} />
-          <Route path="/user/appointments" element={<ViewAppoinment />} />
-          <Route path="/user/mood" element={<MoodTracker />} />
+       
           <Route path="/counselor-dashboard" element={<CounselorDashboard />} />
-          <Route path="/counselor/requests" element={<CounselorPendingReq />} />
-          <Route path="/counselor/schedule" element={<MySchedule />} />
-          <Route path="/counselor/availability" element={<AvailabilitySettings />} />
-          <Route path="/counselor/clients" element={<MyClient />} />
-
+        
         </Route>
       </Routes>
     </Router>
